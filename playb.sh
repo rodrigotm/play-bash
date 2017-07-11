@@ -1,10 +1,21 @@
 #!/bin/bash
 source ./config/play-configs
 
+#____________________________________________________________
+#|                                                          | 
+#|        					playb							|
+#|                             	                            |
+#|          CREATED BY RODRIGO TEIXEIRA              		| 
+#|                  https://github.com/rodrigotm/play-bash  |
+#|__________________________________________________________|
+
+#Command
 C1="$1"
 
+#Option one
 O1="$2"
 
+#Option two
 O2="$3"
 
 #OK function save snapshot
@@ -13,7 +24,7 @@ saveSnapShot(){
 
 	rm $RUNNING_PORTS
 	while [ "$PORT" -le "$END_SEARCH_PORT" ]; do
-	    echo "Writing $PORT..."
+	    echo "Searching $PORT..."
 	    ps ax | grep port=$PORT >> $RUNNING_PORTS
 	    PORT=$(( PORT + 1 ))
 	done
@@ -27,13 +38,11 @@ restoreSnapShot() {
 	    echo "Verifing $PORT..."
 	    if grep -q "/stage -Dhttp.port=$PORT" $RUNNING_PORTS
 	        then
-	             echo "$PORT was running"
-	             ALL_PATH_AND_PORT=`egrep -o "(?/opt.*)(?$PORT)" $RUNNING_PORTS`
-	             FOLDER=`echo $ALL_PATH_AND_PORT | sed "s/\/target\/universal\/stage \-Dhttp.port=$PORT//g"`
-	             echo $FOLDER
-	             start $PORT $FOLDER &
-	        else
-	            echo "$PORT wasn’t running"
+	            echo "$PORT was running"
+	            ALL_PATH_AND_PORT=`egrep -o "(?/opt.*)(?$PORT)" $RUNNING_PORTS`
+	            FOLDER=`echo $ALL_PATH_AND_PORT | sed "s/\/target\/universal\/stage \-Dhttp.port=$PORT//g"`
+	            echo $FOLDER
+	            start $PORT $FOLDER &
 	    fi
 	    PORT=$(( PORT + 1 ))
 	done
@@ -44,8 +53,6 @@ snapshot(){
 	OPTION="$1"
 
 	case "$OPTION" in
-	   "savesnapshot") savesnapshot
-	   ;;
 	   "-s") echo "Saving snapshot..."
 			saveSnapShot
 	   ;;
@@ -55,7 +62,6 @@ snapshot(){
 	   *) echo "We don't know this option $OPTION"
 	   exit
 	esac
-	echo
 }
 
 #OK function restart play
@@ -92,9 +98,32 @@ start(){
 	fi
 }
 
-#OK function restart play
-stop(){
-	echo "Restarting..."
+#OK function kill play procces
+kill(){
+	OPTION="$1"
+	PORT="$2"
+
+	echo "Killing..."
+	if [ -n $OPTION ] && [ -n $PORT ]
+		then
+			echo "Ops! We don't undestand. For kill all try playb kill -a. For kill one try playb kill 9001"
+			exit
+	fi
+
+	if [ -n $PORT ]
+		then
+			echo "Killing $PORT"
+			pkill -f "/stage -Dhttp.port=$PORT" &
+			exit
+	fi
+
+	case "$OPTION" in
+	   "-a") echo "Killing all"
+			pkill -f "/stage -Dhttp.port=" &
+	   ;;
+	   *) echo "We don't know this option $OPTION"
+	   exit
+	esac
 }
 
 case "$C1" in
@@ -104,7 +133,7 @@ case "$C1" in
    ;;
    "start") start $O1 $O2
    ;;
-   "stop") stop $O1
+   "kill") kill $O1 $O2
    ;;
    *) echo "What's is your command?"
    exit
