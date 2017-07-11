@@ -7,7 +7,6 @@ if [ -z $APLICATION_SECRET ]
 	then
 		echo 'Do you need put your application secret on /config/play-configs'
 		exit
-	else
 fi
 
 if [ -z $PORT  ] || [ -z $PATH  ]
