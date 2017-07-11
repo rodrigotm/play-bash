@@ -1,5 +1,6 @@
-#!/bin/sh
-'/config/play-configs'
+#!/bin/bash
+./config/play-configs
+
 PORT=$START_SEARCH_PORT
 
 while [ "$PORT" -le "$END_SEARCH_PORT" ]; do

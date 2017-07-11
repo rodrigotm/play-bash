@@ -1,11 +1,12 @@
-#!/bin/sh
-'/config/play-configs'
+#!/bin/bash
+./config/play-configs
 
 PORT="$1"
 PATH="$2"
 if [ -z $APLICATION_SECRET ]
 	then
 		echo 'Do you need put your application secret on /config/play-configs'
+		exit
 	else
 fi
 
