@@ -1,5 +1,5 @@
 #!/bin/bash
-./config/play-configs
+source ./config/play-configs
 
 PORT=$START_SEARCH_PORT
 
