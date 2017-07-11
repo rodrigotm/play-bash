@@ -1,0 +1,21 @@
+# Configs for search ports
+START_SEARCH_PORT=9000
+# -------------------
+END_SEARCH_PORT=90020
+# -------------------
+
+# Config save location file contains running ports
+RUNNING_PORTS='/tmp/running-ports.txt'
+
+# Config for run Play
+APLICATION_SECRET=''
+#--------------------
+PATH_CONFIG_FILE='/conf/application-test.conf'
+#--------------------
+# Important! Do you need file build.sbt or outher
+# file contains into: name := """name-project"""
+FILE_BUILD_SBT ='build.sbt'
+#--------------------
+XMX_DEFAULT='768m'
+#--------------------
+XMS_DEFAULT='768m'

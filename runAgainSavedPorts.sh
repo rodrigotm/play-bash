@@ -1,18 +1,18 @@
 #!/bin/sh
-port=9000
-portmax=9020
-while [ "$port" -le "$portmax" ]; do
-    echo "Verifing $port..."
-    if grep -q "/stage -Dhttp.port=$port" /tmp/running-ports.txt
+'/config/play-configs'
+PORT=$START_SEARCH_PORT
+
+while [ "$PORT" -le "$END_SEARCH_PORT" ]; do
+    echo "Verifing $PORT..."
+    if grep -q "/stage -Dhttp.port=$PORT" $RUNNING_PORTS
         then
-             echo "$port was running"
-             allPath=`egrep -o "(?/opt.*)(?$port)" /tmp/running-ports.txt`
-             path=`echo $allPath | sed "s/\/target\/universal\/stage \-Dhttp.port=$port//g"`
-             echo $path
-             sudo start-play $port $path &
+             echo "$PORT was running"
+             ALL_PATH_AND_PORT=`egrep -o "(?/opt.*)(?$PORT)" $RUNNING_PORTS`
+             PATH=`echo $ALL_PATH_AND_PORT | sed "s/\/target\/universal\/stage \-Dhttp.port=$PORT//g"`
+             echo $PATH
+             sudo ./start-play $PORT $PATH &
         else
-            echo "$port wasn’t running"
+            echo "$PORT wasn’t running"
     fi
-    port=$(( port + 1 ))
+    PORT=$(( PORT + 1 ))
 done
-rm /tmp/running-ports.txt
