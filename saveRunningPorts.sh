@@ -1,5 +1,5 @@
 #!/bin/sh
-rm 
+rm /tmp/running-ports.txt
 port=9000
 portmax=9020
 while [ "$port" -le "$portmax" ]; do
