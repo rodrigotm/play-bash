@@ -110,7 +110,8 @@ kill(){
 			exit
 	fi
 
-	if [ -z != $PORT ]
+	re='^[0-9]+$'
+	if [ -z != $PORT ] && [[ $PORT =~ $re ]]
 		then
 			echo "Killing $PORT"
 			pkill -f "/stage -Dhttp.port=$PORT" &
@@ -121,6 +122,7 @@ kill(){
 	   "-a") echo "Killing all"
 			pkill -f "/stage -Dhttp.port=" &
 	   ;;
+
 	   *) echo "We don't know this option $OPTION"
 	   exit
 	esac
