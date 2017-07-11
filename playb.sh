@@ -100,30 +100,29 @@ start(){
 
 #OK function kill play procces
 kill(){
-	PORT="$1"
-	OPTION="$2"
-	
+	PORT_OR_OPTION="$1"
+
 	echo "Killing..."
-	if [ -z != $PORT ] && [ -z != $OPTION ]
+	if [ -z $PORT_OR_OPTION ]
 		then
 			echo "Ops! We don't undestand. For kill all try playb kill -a. For kill one try playb kill 9001"
 			exit
 	fi
 
 	re='^[0-9]+$'
-	if [ -z != $PORT ] && [[ $PORT =~ $re ]]
+	if [ -z != $PORT_OR_OPTION ] && [[ $PORT_OR_OPTION =~ $re ]]
 		then
-			echo "Killing $PORT"
-			pkill -f "/stage -Dhttp.port=$PORT" &
+			echo "Killing $PORT_OR_OPTION"
+			pkill -f "/stage -Dhttp.port=$PORT_OR_OPTION" &
 			exit
 	fi
 
-	case "$OPTION" in
+	case "$PORT_OR_OPTION" in
 	   "-a") echo "Killing all"
 			pkill -f "/stage -Dhttp.port=" &
 	   ;;
 
-	   *) echo "We don't know this option $OPTION"
+	   *) echo "We don't know this option $PORT_OR_OPTION"
 	   exit
 	esac
 }
@@ -135,7 +134,7 @@ case "$C1" in
    ;;
    "start") start $O1 $O2
    ;;
-   "kill") kill $O1 $O2
+   "kill") kill $O1
    ;;
    *) echo "What's is your command?"
    exit
