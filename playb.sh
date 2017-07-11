@@ -100,17 +100,17 @@ start(){
 
 #OK function kill play procces
 kill(){
-	OPTION="$1"
-	PORT="$2"
-
+	PORT="$1"
+	OPTION="$2"
+	
 	echo "Killing..."
-	if [ -n $OPTION ] && [ -n $PORT ]
+	if [ -z != $PORT ] && [ -z != $OPTION ]
 		then
 			echo "Ops! We don't undestand. For kill all try playb kill -a. For kill one try playb kill 9001"
 			exit
 	fi
 
-	if [ -n $PORT ]
+	if [ -z != $PORT ]
 		then
 			echo "Killing $PORT"
 			pkill -f "/stage -Dhttp.port=$PORT" &
