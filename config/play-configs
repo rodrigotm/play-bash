@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SED=`which sed`
+AWK=`which awk`
+
 # Configs for search ports
 START_SEARCH_PORT=9000
 # -------------------
