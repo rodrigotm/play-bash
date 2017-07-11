@@ -10,11 +10,11 @@ END_SEARCH_PORT=9020
 RUNNING_PORTS="/tmp/running-ports.txt"
 
 # Config for run Play
-APLICATION_SECRET=""
+APPLICATION_SECRET=""
 #--------------------
 PATH_CONFIG_FILE="/conf/application-test.conf"
 #--------------------
-# Important! Do you need file build.sbt or outher
+# Important! Do you need file build.sbt or other
 # file contains into: name := """name-project"""
 FILE_BUILD_SBT="build.sbt"
 #--------------------
