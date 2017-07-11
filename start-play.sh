@@ -1,5 +1,5 @@
 #!/bin/bash
-./config/play-configs
+source ./config/play-configs
 
 PORT="$1"
 PATH="$2"
