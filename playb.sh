@@ -45,7 +45,7 @@ O1="$2"
 O2="$3"
 
 #Option three
-O3="$3"
+O3="$4"
 
 #OK function save snapshot
 saveSnapShot(){
