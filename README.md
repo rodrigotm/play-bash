@@ -1,24 +1,67 @@
 # play-bash
-Help manage yours play servers on the bash terminal
+Help manage yours Play framework servers on the bash terminal
 
-Create alias playb
+Create Symbolic link playb
 
-`cd /play-bash/`
-
-After 
-
-`alias playb='playb.sh'`
+`sudo ln -s /your/path/play-bash/playb.sh /usr/bin/playb`
 
 Commands:
 
-`sudo playb start 9001 /opt/git/play-project/`
+# play-bash
 
-`sudo playb snapshot -s`
+<p align="center">
+  <img width="600" height="300" src="./header.png">
+</p>
 
-`sudo playb snapshot -r`
+ 
+## About
 
-`sudo playb kill 9001`
+Help manage yours Play framework production servers on the bash terminal
 
-`sudo playb kill -a`
+### Create Symbolic link playb
+ 
+### Commands
 
-<!-- `sudo restart 9001` -->
+ 1. Start 
+ > Start one play server. Do you need put port number and path project
+```sh
+sudo playb start 9001 /opt/git/play-project/
+```
+
+ 2. Kill 
+ > Kill only one. Do you need put port number
+```sh
+sudo playb kill 9001
+```
+
+ > Kill all servers. Do you need put -a ( all ) option
+```sh
+sudo playb kill -a
+```
+
+ 3. Compile 
+ > Compile one project
+```sh
+sudo playb compile
+```
+> Compile one project with memory
+```sh
+sudo playb compile -mem 256
+```
+
+4. Snapshot 
+> Use for save all servers running and restore all
+> For save use -s
+```sh
+sudo playb snapshot -s
+```
+> For restore use -r
+```sh
+sudo playb snapshot -r
+```
+
+ 5. Restart
+ > Restart one server. Do you need put one port and path project
+```sh
+sudo playb restart 9001 /opt/git/play-project/
+```
