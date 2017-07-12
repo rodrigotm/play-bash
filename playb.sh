@@ -106,7 +106,7 @@ restart(){
 	fi
 
 	kill $PORT &
-	sleep sleep 2
+	sleep 2
 	start $PORT $FOLDER
 }
 
