@@ -1,15 +1,4 @@
 # play-bash
-Help manage yours Play framework servers on the bash terminal
-
-Create Symbolic link playb for execute everywhere
-
-```sh
-sudo ln -s /your/path/play-bash/playb.sh /usr/bin/playb
-```
-
-Commands:
-
-# play-bash
 
 <p align="center">
   <img width="600" height="300" src="./header.png">
@@ -20,7 +9,12 @@ Commands:
 
 Help manage yours Play framework production servers on the bash terminal
 
-### Create Symbolic link playb
+### Symbolic link playb
+
+> Create Symbolic link playb for execute everywhere
+```sh
+sudo ln -s /your/path/play-bash/playb.sh /usr/bin/playb
+```
  
 ### Commands
 
