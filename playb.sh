@@ -1,5 +1,15 @@
 #!/bin/bash
 
+
+#____________________________________________________________
+#|                                                          | 
+#|        	   	 playb				    |
+#|                             	                            |
+#|              CREATED BY RODRIGO TEIXEIRA                 | 
+#|        https://github.com/rodrigotm/play-bash  	    |
+#|__________________________________________________________|
+
+
 # Configs for search ports
 START_SEARCH_PORT=9000
 # -------------------
@@ -24,14 +34,6 @@ XMS_DEFAULT="768m"
 
 SED=`which sed`
 AWK=`which awk`
-
-#____________________________________________________________
-#|                                                          | 
-#|        					playb							|
-#|                             	                            |
-#|          CREATED BY RODRIGO TEIXEIRA              		| 
-#|                  https://github.com/rodrigotm/play-bash  |
-#|__________________________________________________________|
 
 #Command
 C1="$1"
