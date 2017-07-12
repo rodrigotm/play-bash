@@ -1,10 +1,8 @@
 # play-bash
 Help manage yours Play framework servers on the bash terminal
 
-Create Symbolic link playb
+Create Symbolic link playb for execute everywhere
 
-`sudo ln -s /your/path/play-bash/playb.sh /usr/bin/playb`
- > Create sympolic link for execute everywhere
 ```sh
 sudo ln -s /your/path/play-bash/playb.sh /usr/bin/playb
 ```
