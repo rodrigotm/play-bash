@@ -24,7 +24,7 @@ APPLICATION_SECRET=""
 #--------------------
 PATH_CONFIG_FILE="/conf/application-test.conf"
 #--------------------
-# Important! Do you need file build.sbt or other
+# Important! You need the file build.sbt or other
 # file contains into: name := """name-project"""
 FILE_BUILD_SBT="build.sbt"
 #--------------------
@@ -101,7 +101,7 @@ restart(){
 
 	if [ -z $PORT ] || [ -z $FOLDER ]
 		then
-			echo "Ops! Do you need put port and folder"
+			echo "Ops! You need put port and folder"
 			exit
 	fi
 
@@ -118,13 +118,13 @@ start(){
 
 	if [ -z $APPLICATION_SECRET ]
 		then
-			echo 'Do you need put your application secret on /config/play-configs'
+			echo 'You need put your application secret on /config/play-configs'
 			exit
 	fi
 
 	if [ -z $PORT  ] || [ -z $FOLDER  ]
 		then
-			echo 'Do you need put port number first and after project path. Example: 9001 /opt/git/play-project'
+			echo 'You need put port number first and after project path. Example: 9001 /opt/git/play-project'
 		else
 
 			cd $FOLDER
@@ -175,19 +175,19 @@ compile(){
 
 	if [ -z $FILE_PROJECT ]
 		then
-			echo "Ops! Do you need put path project"
+			echo "Ops! You need put the path project"
 			exit
 	fi
 
 	if [ -z != MEM_OPTION ] && [ -z MEM_NUMBER ]
 		then
-			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
 			exit
 	fi
 
 	if [ -z MEM_OPTION ] && [ -z != MEM_NUMBER ]
 		then
-			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
 			sudo ${FILE_PROJECT}{activator} clean stage
 			exit
 	fi
@@ -203,11 +203,11 @@ compile(){
 	if [ -z != $MEM_OPTION ] && [ -z != $MEM_NUMBER ] && [[ $MEM_NUMBER =~ $re ]]
 		then
 			sudo ${FILE_PROJECT}{activator} clean stage $MEM_OPTION $MEM_NUMBER
-			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
 			exit
 	fi
 
-	echo "We don't undestand. Maybe do you put not a number!"
+	echo "We don't undestand. Maybe you put not a number!"
 	exit
 }
 
