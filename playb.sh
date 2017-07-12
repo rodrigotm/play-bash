@@ -179,30 +179,30 @@ compile(){
 			exit
 	fi
 
-	if [ -z != MEM_OPTION ] && [ -z MEM_NUMBER ]
+	if [ -z != $MEM_OPTION ] && [ -z $MEM_NUMBER ]
 		then
 			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
 			exit
 	fi
 
-	if [ -z MEM_OPTION ] && [ -z != MEM_NUMBER ]
+	if [ -z $MEM_OPTION ] && [ -z != $MEM_NUMBER ]
 		then
 			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
-			sudo ${FILE_PROJECT}{activator} clean stage
+			sudo ${FILE_PROJECT}${activator} clean stage
 			exit
 	fi
 
-	if [ -z MEM_OPTION ] && [ -z MEM_NUMBER ]
+	if [ -z $MEM_OPTION ] && [ -z $MEM_NUMBER ]
 		then
 			echo "Compiling..."
-			sudo ${FILE_PROJECT}{activator} clean stage
+			sudo ${FILE_PROJECT}${activator} clean stage
 			exit
 	fi
 
 	re='^[0-9]+$'
 	if [ -z != $MEM_OPTION ] && [ -z != $MEM_NUMBER ] && [[ $MEM_NUMBER =~ $re ]]
 		then
-			sudo ${FILE_PROJECT}{activator} clean stage $MEM_OPTION $MEM_NUMBER
+			sudo ${FILE_PROJECT}${activator} clean stage $MEM_OPTION $MEM_NUMBER
 			echo "Ops! For compile with memory you need put -mem option and number. Example: playb /path/project -mem 256"
 			exit
 	fi
