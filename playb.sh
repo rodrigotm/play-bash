@@ -173,6 +173,10 @@ compile(){
 	MEM_OPTION="$2"
 	MEM_NUMBER="$3"
 
+	echo $FILE_PROJECT
+	echo $MEM_OPTION
+	echo $MEM_NUMBER
+
 	if [ -z $FILE_PROJECT ]
 		then
 			echo "Ops! You need put the path project"
@@ -220,7 +224,7 @@ case "$C1" in
    ;;
    "kill") kill $O1
    ;;
-   "compile") compile $O1 $O2 $03
+   "compile") compile $O1 $O2 $O3
    ;;
    *) echo "What's is your command?"
    exit
