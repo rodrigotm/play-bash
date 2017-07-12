@@ -42,7 +42,7 @@ sudo playb compile
 ```
 > Compile one project with memory
 ```sh
-sudo playb compile -mem 256
+sudo playb compile /opt/git/play-project/ -mem 256
 ```
 
 4. Snapshot 

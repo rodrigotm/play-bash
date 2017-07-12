@@ -44,6 +44,9 @@ O1="$2"
 #Option two
 O2="$3"
 
+#Option three
+O3="$3"
+
 #OK function save snapshot
 saveSnapShot(){
 	PORT=$START_SEARCH_PORT
@@ -93,8 +96,19 @@ snapshot(){
 #OK function restart play
 restart(){
 	echo "Restarting..."
-}
+	PORT="$1"
+	FOLDER="$2"
 
+	if [ -z $PORT ] || [ -z $FOLDER ]
+		then
+			echo "Ops! Do you need put port and folder"
+			exit
+	fi
+
+	kill $PORT &
+	sleep sleep 2
+	start $PORT $FOLDER
+}
 
 #OK function start play
 start(){
@@ -153,14 +167,60 @@ kill(){
 	esac
 }
 
+#OK function kill play procces
+compile(){
+	FILE_PROJECT="$1"
+	MEM_OPTION="$2"
+	MEM_NUMBER="$3"
+
+	if [ -z $FILE_PROJECT ]
+		then
+			echo "Ops! Do you need put path project"
+			exit
+	fi
+
+	if [ -z != MEM_OPTION ] && [ -z MEM_NUMBER ]
+		then
+			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			exit
+	fi
+
+	if [ -z MEM_OPTION ] && [ -z != MEM_NUMBER ]
+		then
+			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			sudo ${FILE_PROJECT}{activator} clean stage
+			exit
+	fi
+
+	if [ -z MEM_OPTION ] && [ -z MEM_NUMBER ]
+		then
+			echo "Compiling..."
+			sudo ${FILE_PROJECT}{activator} clean stage
+			exit
+	fi
+
+	re='^[0-9]+$'
+	if [ -z != $MEM_OPTION ] && [ -z != $MEM_NUMBER ] && [[ $MEM_NUMBER =~ $re ]]
+		then
+			sudo ${FILE_PROJECT}{activator} clean stage $MEM_OPTION $MEM_NUMBER
+			echo "Ops! For compile with memory do you need put -mem option and number. Example: playb /path/project -mem 256"
+			exit
+	fi
+
+	echo "We don't undestand. Maybe do you put not a number!"
+	exit
+}
+
 case "$C1" in
    "snapshot") snapshot $O1
    ;;
-   "restart") restart 
+   "restart") restart $O1 $O2
    ;;
    "start") start $O1 $O2
    ;;
    "kill") kill $O1
+   ;;
+   "compile") compile $O1 $O2 $03
    ;;
    *) echo "What's is your command?"
    exit
